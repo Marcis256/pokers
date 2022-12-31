@@ -6,7 +6,7 @@ import java.util.Random;
 public class Deck {
     
     private ArrayList<Card> cards;
-    
+
     public Deck(){
         this.cards = new ArrayList<Card>();
     }
@@ -36,7 +36,7 @@ public class Deck {
     public String toString() {
         String cardListOutput = "";
         for(Card aCard : this.cards) {
-            cardListOutput += " " + aCard.toString();
+            cardListOutput += ", " + aCard.toString();
         }
         return cardListOutput;
     }
@@ -48,14 +48,17 @@ public class Deck {
     public Card getCard(int i) {
         return this.cards.get(i);
     }
-    
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
     public void addCard(Card addCard) {
         this.cards.add(addCard);
     }
-    
+
     public void draw(Deck comingFrom) {
         this.cards.add(comingFrom.getCard(0));
         comingFrom.removeCard(0);
     }
-    
 }

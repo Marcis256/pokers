@@ -9,13 +9,13 @@ public class Card {
         this.value = value;
         this.suit = suit;
     }
-    
-    
     public String toString() {
         return this.suit.toString() + "-" + this.value.toString();
     }
-    
     public Value getValue() {
         return this.value;
+    }
+    public Suit getSuit() {
+        return this.suit;
     }
 }

@@ -1,6 +1,7 @@
 package com.marcis.pokers;
 
 import com.marcis.pokers.model.Deck;
+import com.marcis.pokers.model.Game;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,35 +11,18 @@ public class PokersApplication {
 	public static void main(String[] args) {
 		
 		//SpringApplication.run(PokersApplication.class, args);
-		System.out.println("Hi!!");
-		Deck playingDeck = new Deck();
-		playingDeck.createFullDeck();
-		playingDeck.shuffle();
-		
-		Deck playerDeck = new Deck();
-		Deck opponentDeck = new Deck();
-		Deck tableDeck = new Deck();
-		
-		playerDeck.draw(playingDeck);
-		playerDeck.draw(playingDeck);
+		Game game = new Game();
+		game.addNewPlayer("Mārcis");
+		game.addNewPlayer("Aivars");
+		game.addNewPlayer("Ernests");
+		game.dealerShuffleCards();
+		game.dealerGiveCardsToAllPlayer();
+		game.dealerDealRiver();
+		game.dealerDealFlop();
+		game.dealerDealTurn();
+		game.combination();
 
-		opponentDeck.draw(playingDeck);
-		opponentDeck.draw(playingDeck);
-
-		tableDeck.draw(playingDeck);
-		tableDeck.draw(playingDeck);
-		tableDeck.draw(playingDeck);
-		tableDeck.draw(playingDeck);
-		tableDeck.draw(playingDeck);
-		
-		System.out.println("Your hand:");
-		System.out.println(playerDeck.toString());
-
-		System.out.println("Opponent hand:");
-		System.out.println(opponentDeck.toString());
-		
-		System.out.println("TableDeck hand:");
-		System.out.println(tableDeck.toString());
+		System.out.println(game.toString());
 	}
 
 }
