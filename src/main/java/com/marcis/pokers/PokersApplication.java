@@ -1,6 +1,5 @@
 package com.marcis.pokers;
 
-import com.marcis.pokers.model.Deck;
 import com.marcis.pokers.model.Game;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +19,7 @@ public class PokersApplication {
 		game.dealerDealRiver();
 		game.dealerDealFlop();
 		game.dealerDealTurn();
-		game.combination();
+		game.getCombination();
 
 		System.out.println(game.toString());
 	}
