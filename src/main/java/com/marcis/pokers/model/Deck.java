@@ -1,16 +1,27 @@
 package com.marcis.pokers.model;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
+@Table
+@Entity(name = "deck")
+@Getter @Setter @NoArgsConstructor
 public class Deck {
-    
-    private ArrayList<Card> cards;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long did;
+    @OneToMany(mappedBy = "deck")
+    @ToString.Exclude
+    private List<Card> cards;
 
-    public Deck(){
-        this.cards = new ArrayList<Card>();
-    }
-    
     public void createFullDeck() {
         for(Suit cardSuit : Suit.values()) {
             for(Value cardValue : Value.values()) {
@@ -47,10 +58,6 @@ public class Deck {
     
     public Card getCard(int i) {
         return this.cards.get(i);
-    }
-
-    public ArrayList<Card> getCards() {
-        return cards;
     }
 
     public void addCard(Card addCard) {
