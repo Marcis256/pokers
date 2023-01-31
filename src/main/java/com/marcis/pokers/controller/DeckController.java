@@ -22,12 +22,23 @@ public class DeckController {
     @Autowired
     DeckRepostory deckRepostory;
 
+    @Autowired
+    ICardService cardService;
+    @Autowired
+    CardRepostory cardRepostory;
+
     @GetMapping("/decks")
     @ResponseBody
     public ResponseEntity<ArrayList<Deck>> getDecks() {
         return new ResponseEntity<ArrayList<Deck>>(deckService.selectDeck(), new HttpHeaders(), HttpStatus.OK);
     }
-
     @PostMapping("/decks")
     public void createNewDeck() { deckService.createFullDeck();}
+
+    @GetMapping("/decks/{id}")
+    @ResponseBody
+    public ResponseEntity<Deck> getDecksById(@PathVariable Long id) throws Exception {
+        return new ResponseEntity<Deck>(deckService.selectOneDeckById(id), new HttpHeaders(), HttpStatus.OK);
+    }
+
 }

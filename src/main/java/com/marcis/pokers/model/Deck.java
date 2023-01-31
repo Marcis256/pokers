@@ -22,28 +22,6 @@ public class Deck {
     @ToString.Exclude
     private List<Card> cards;
 
-    public void createFullDeck() {
-        for(Suit cardSuit : Suit.values()) {
-            for(Value cardValue : Value.values()) {
-                this.cards.add(new Card(cardSuit,cardValue));
-            }
-        }
-    }
-    
-    public void shuffle(){
-        ArrayList<Card> tmpDeck = new ArrayList<Card>();
-        Random random = new Random();
-        int randomCardIndex = 0;
-        int orginalSize = this.cards.size();
-        for(int i = 0; i< orginalSize; i++) {
-            //generate Random Index rand.nextInt((max - min) + 1) + min)
-            randomCardIndex = random.nextInt((this.cards.size()-1 -0) + 1) + 0;
-            tmpDeck.add(this.cards.get(randomCardIndex));
-            this.cards.remove(randomCardIndex);
-        }
-        this.cards = tmpDeck;
-    }
-    
     public String toString() {
         String cardListOutput = "";
         for(Card aCard : this.cards) {

@@ -19,10 +19,10 @@ public class Game {
         this.playersName.add(new Players(name));
     }
 
-    public void dealerShuffleCards() {
+/*    public void dealerShuffleCards() {
         dealer.createFullDeck();
         dealer.shuffle();
-    }
+    }*/
     public void dealerGiveCardsToAllPlayer() {
         for(Players players : playersName) {
             players.getPlayerCards().draw(dealer);
